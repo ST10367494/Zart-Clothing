@@ -6,6 +6,13 @@
     <title>ZART CLOTHING</title>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZART CLOTHING</title>
+    <script src="scripts.js" defer></script>
     <style>
         /* General Styles */
         body {
@@ -14,40 +21,211 @@
             padding: 0;
             background-color: #f9f9f9;
         }
-        nav ul {
+
+        /* Fullscreen Video */
+        #loading-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            overflow: hidden;
+        }
+
+        #loading-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            font-family: 'Helvetica Neue', sans-serif;
+            text-align: center;
+        }
+
+        header nav ul {
             list-style: none;
             display: flex;
-            justify-content: space-around;
-            padding: 10px;
-            background-color: #333;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
         }
-        nav ul li a {
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
             color: white;
             text-decoration: none;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
         }
 
+        header nav ul li a:hover {
+            color: #f2c94c; /* Gold color */
+        }
+
+        /* Product Grid */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
+        /* Product Card */
         .product {
             background: #fff;
-            padding: 10px;
-            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
-        table th, table td {
-            border: 1px solid #ddd;
-            padding: 8px;
+
+        .product img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .product h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        .product p {
+            font-size: 1rem;
+            color: #777;
+            margin: 0 0 15px;
+        }
+
+        .product button {
+            background-color: #f2c94c; /* Gold color */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .product button:hover {
+            background-color: #e0b237;
+        }
+
+        /* About Section */
+        #about {
+            padding: 60px 20px;
+            background-color: #f5f5f5;
             text-align: center;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        #about h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        #about p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Contact Form */
+        #contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        #contact-form input, #contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        #contact-form button {
+            background-color: #f2c94c;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        #contact-form button:hover {
+            background-color: #e0b237;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
         }
 
         /* Responsive Design */
@@ -71,6 +249,187 @@
             }
         }
     </style>
+</head>
+<body>
+    <!-- Loading Page with Video -->
+    <div id="loading-page">
+        <video autoplay muted loop id="loading-video" preload="auto">
+            <source src="gallery/WhatsApp Video 2024-12-23 at 13.06.25 (1).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay">
+            <h1>ZART CLOTHING</h1>
+            <p>Where Luxury Meets Style</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://www.instagram.com/zartclothing" target="_blank">Instagram</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Showcase Products -->
+        <section id="shop">
+            <h2>Our Collection</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="gallery/WhatsApp Image 2024-12-23 at 13.06.36.jpeg" alt="Product 1" loading="lazy">
+                    <h3>Luxury Jacket</h3>
+                    <p>R250</p>
+                    <button class="add-to-cart" data-name="Luxury Jacket" data-price="250">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="gallery/WhatsApp Image 2024-12-23 at 13.06.35 (1).jpeg" alt="Product 2" loading="lazy">
+                    <h3>Elegant Dress</h3>
+                    <p>R180</p>
+                    <button class="add-to-cart" data-name="Elegant Dress" data-price="180">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="gallery/WhatsApp Image 2024-12-23 at 13.06.35 (2).jpeg" alt="Product 3" loading="lazy">
+                    <h3>Classic Suit</h3>
+                    <p>R300</p>
+                    <button class="add-to-cart" data-name="Classic Suit" data-price="300">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart">
+            <h2>Your Cart</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- Cart items will be dynamically added here -->
+                </tbody>
+            </table>
+            <p id="cart-total">Total: R0</p>
+            <button id="checkout-button">Checkout</button>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About ZART CLOTHING</h2>
+            <p>ZART CLOTHING redefines elegance with timeless designs and unparalleled quality.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form id="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ZART CLOTHING. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const cart = [];
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const name = button.getAttribute('data-name');
+                const price = parseFloat(button.getAttribute('data-price'));
+
+                const existingItem = cart.find(item => item.name === name);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ name, price, quantity: 1 });
+                }
+
+                updateCart();
+            });
+        });
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>R${item.price.toFixed(2)}</td>
+                    <td><input type="number" value="${item.quantity}" min="1" data-name="${item.name}" class="update-quantity"></td>
+                    <td>R${(item.price * item.quantity).toFixed(2)}</td>
+                    <td><button class="remove-item" data-name="${item.name}">Remove</button></td>
+                `;
+
+                cartItems.appendChild(row);
+                total += item.price * item.quantity;
+            });
+
+            document.getElementById('cart-total').textContent = `Total: R${total.toFixed(2)}`;
+
+            document.querySelectorAll('.update-quantity').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const name = e.target.getAttribute('data-name');
+                    const quantity = parseInt(e.target.value);
+                    const item = cart.find(item => item.name === name);
+
+                    if (quantity > 0) {
+                        item.quantity = quantity;
+                    }
+
+                    updateCart();
+                });
+            });
+
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', () => {
+                    const name = button.getAttribute('data-name');
+                    const index = cart.findIndex(item => item.name === name);
+
+                    if (index > -1) {
+                        cart.splice(index, 1);
+                    }
+
+                    updateCart();
+                });
+            });
+        }
+
+        document.getElementById('checkout-button').addEventListener('click', () => {
+            if (cart.length > 0) {
+                alert('Thank you for your purchase!');
+                cart.length = 0;
+                updateCart();
+            } else {
+                alert('Your cart is empty.');
+            }
+        });
+    </script>
+</body>
+</html>
+
 </head>
 <body>
     <!-- Loading Page with Video -->
